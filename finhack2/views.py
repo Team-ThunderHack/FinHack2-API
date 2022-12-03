@@ -127,18 +127,19 @@ def previousRecommendations(request):
         closePrice = entries['close']
         marketData.append([openPrice,dateOfentry[0:10],highPrice,lowPrice,closePrice])
 
-    pastRecomendations = []
+    pastRecommendations = []
     for i in range(1,length):
         if(marketData[i][0]>marketData[i-1][3] and 
            marketData[i][0]<marketData[i-1][2] and
            marketData[i][2]>marketData[i-1][2]):
             price = (int(int(float(marketData[i-1][2]))/100))*100
-            pastRecomendations.append([(marketData[i][1]),price,"PE"])
+            pastRecommendations.append([(marketData[i][1]),price,"PE"])
 
         if(marketData[i][0]>marketData[i-1][3] and 
            marketData[i][0]<marketData[i-1][2] and
            marketData[i][3]<marketData[i-1][3]):
             price = ((int(int(float(marketData[i-1][3]))/100))*100)+100
-            pastRecomendations.append([(marketData[i][1]),price,"CE"])
- 
-    return  Response(json.dumps(pastRecomendations))
+            pastRecommendations.append([(marketData[i][1]),price,"CE"])
+    
+    pastRecommendations = json.dumps(pastRecommendations)
+    return  Response(json.loads(pastRecommendations))
