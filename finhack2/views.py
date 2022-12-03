@@ -9,18 +9,15 @@ from rest_framework.decorators import api_view
 import warnings
 warnings.simplefilter("ignore")
 
-
-
-
 @api_view(['GET'])
 def nifty(request):
     today = date.today()
     back5days = today + timedelta(days=-5, hours=0)
     tomorrow = today + timedelta(days=1, hours=0)
 
-    dt = datetime.now()
-    x = dt.weekday()
-    if(x==5 or x==6):
+    d = date.today()
+    x = calendar.day_name[d.weekday()]
+    if(x=="Saturday" or x=="Sunday"):
         return (json.dumps([-2,0,0,0,0,0]))
     
     breeze = BreezeConnect(api_key="")
