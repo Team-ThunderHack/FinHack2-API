@@ -18,6 +18,11 @@ def nifty(request):
     back5days = today + timedelta(days=-5, hours=0)
     tomorrow = today + timedelta(days=1, hours=0)
 
+    dt = datetime.now()
+    x = dt.weekday()
+    if(x==5 or x==6):
+        return (json.dumps([-2,0,0,0,0,0]))
+    
     breeze = BreezeConnect(api_key="")
     breeze.generate_session(api_secret="", 
                             session_token="")
@@ -103,6 +108,11 @@ def banknifty(request):
     today = date.today()
     back5days = today + timedelta(days=-5, hours=0)
     tomorrow = today + timedelta(days=1, hours=0)
+
+    dt = datetime.now()
+    x = dt.weekday()
+    if(x==5 or x==6):
+        return (json.dumps([-2,0,0,0,0,0]))
 
     breeze = BreezeConnect(api_key="")
     breeze.generate_session(api_secret="", 
