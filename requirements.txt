@@ -1,0 +1,4 @@
+breeze_connect==1.0.13
+Django==4.1
+djangorestframework==3.14.0
+pandas==1.4.2
