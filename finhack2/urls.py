@@ -20,5 +20,5 @@ from finhack2 import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('nifty/', views.nifty),
-    path('previousbifty/', views.previousnifty),
+    path('previousnifty/', views.previousRecommendations),
 ]

@@ -23,7 +23,7 @@ def nifty(request):
     d = date.today()
     x = calendar.day_name[d.weekday()]
     if(x=="Saturday" or x=="Sunday"):
-        return (json.dumps([-2,0,0,0,0,0]))
+        return Response(json.dumps([-2,0,0,0,0,0]))
     
     breeze = BreezeConnect(api_key="")
     breeze.generate_session(api_secret="", 
@@ -140,5 +140,5 @@ def previousRecommendations(request):
            marketData[i][3]<marketData[i-1][3]):
             price = ((int(int(float(marketData[i-1][3]))/100))*100)+100
             pastRecomendations.append([(marketData[i][1]),price,"CE"])
-
+ 
     return  Response(json.dumps(pastRecomendations))
