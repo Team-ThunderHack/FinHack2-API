@@ -25,9 +25,9 @@ def nifty(request):
     if(x=="Saturday" or x=="Sunday"):
         return Response(json.dumps([-2,0,0,0,0,0]))
     
-    breeze = BreezeConnect(api_key="8%@92h9*115gI3u022K37f=G&236B893")
-    breeze.generate_session(api_secret="2t(52wI22380C482DBl%85q1Q7834t2J", 
-                            session_token="2127633")
+    breeze = BreezeConnect(api_key="")
+    breeze.generate_session(api_secret="", 
+                            session_token="")
 
     iso_date_string = datetime.datetime.strptime("21/03/2022","%d/%m/%Y").isoformat()[:10] + 'T05:30:00.000Z'
     iso_date_time_string = datetime.datetime.strptime("21/03/2022 23:59:59","%d/%m/%Y %H:%M:%S").isoformat()[:19] + '.000Z'
@@ -103,9 +103,9 @@ def previousRecommendations(request):
     back10days = today + timedelta(days=-10, hours=0)
     tomorrow = today + timedelta(days=1, hours=0)
 
-    breeze = BreezeConnect(api_key="8%@92h9*115gI3u022K37f=G&236B893")
-    breeze.generate_session(api_secret="2t(52wI22380C482DBl%85q1Q7834t2J", 
-                            session_token="2127633")
+    breeze = BreezeConnect(api_key="")
+    breeze.generate_session(api_secret="", 
+                            session_token="")
 
     historicalData = breeze.get_historical_data(interval="1day",
                             from_date= str(back10days) + "T07:00:00.000Z",
